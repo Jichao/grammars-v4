@@ -6,6 +6,7 @@
  *
  * @author Marco Willemart
  */
+
 grammar Protobuf3;
 
 //
@@ -202,8 +203,12 @@ fieldNumber
 
 // Normal field
 
+fieldRule
+    : 'repeated' | 'optional' | 'required'
+    ;
+
 field
-    :   'repeated'? typeRule fieldName '=' fieldNumber ('[' fieldOptions ']')? ';'
+    :   fieldRule? typeRule fieldName '=' fieldNumber ('[' fieldOptions ']')? ';'
     ;
 
 fieldOptions
